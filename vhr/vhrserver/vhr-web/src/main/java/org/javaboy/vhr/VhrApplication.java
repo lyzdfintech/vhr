@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableCaching
-@MapperScan(basePackages = "org.javaboy.vhr.mapper")
+@MapperScan(basePackages = {"org.javaboy.vhr.mapper", "com.lyzdfintech.mdcp.mapper"})
 @EnableScheduling
 public class VhrApplication {
 

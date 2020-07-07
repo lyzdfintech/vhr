@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lyzdfintech.mdcp.mapper.AppMilestoneMapper" >
+  <resultMap id="BaseResultMap" type="com.lyzdfintech.mdcp.model.AppMilestone" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="app_key" property="appKey" jdbcType="VARCHAR" />
+    <result column="product_release_date" property="productReleaseDate" jdbcType="DATE" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, app_key, product_release_date, name, gmt_create, gmt_modified
+  </sql>
+  <select id="selectByAppKey" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from app_milestone
+    where app_key = #{appKey}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from app_milestone
+    where id = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.lyzdfintech.mdcp.model.AppMilestone" >
+    insert into app_milestone (app_key, product_release_date, name, gmt_create, gmt_modified)
+    values (#{appKey}, #{productReleaseDate}, #{name}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+  </insert>
+  <update id="updateNameByAppKeyAndProductReleaseDate" parameterType="com.lyzdfintech.mdcp.model.AppMilestone" >
+    update app_milestone set name = #{name}
+    where app_key = #{appKey} and product_release_date = #{productReleaseDate}
+  </update>
+</mapper>
