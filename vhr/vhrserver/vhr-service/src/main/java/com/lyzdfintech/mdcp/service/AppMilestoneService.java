@@ -1,4 +1,4 @@
-package org.javaboy.vhr.service.mdcp;
+package com.lyzdfintech.mdcp.service;
 
 import com.lyzdfintech.mdcp.model.AppMilestone;
 

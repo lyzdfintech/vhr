@@ -1,4 +1,4 @@
-package org.javaboy.vhr.service.mdcp;
+package com.lyzdfintech.mdcp.service;
 
 /**
  * Created by wangmeigong on 2020/5/12.

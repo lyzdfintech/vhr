@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lyzdfintech.mdcp.mapper.AppEnvironmentMapper" >
+  <resultMap id="BaseResultMap" type="com.lyzdfintech.mdcp.model.AppEnvironment" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="app_key" property="appKey" jdbcType="VARCHAR" />
+    <result column="env_name" property="envName" jdbcType="VARCHAR" />
+    <result column="env_desc" property="envDesc" jdbcType="VARCHAR" />
+    <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
+    <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, app_key, env_name, env_desc, gmt_create, gmt_modified
+  </sql>
+  <select id="selectByAppKey" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from app_environment
+    where app_key = #{appKey}
+  </select>
+  <delete id="deleteById" >
+    delete from app_environment
+    where  id = #{id} and app_key = #{appKey}
+  </delete>
+  <insert id="insert" parameterType="com.lyzdfintech.mdcp.model.AppEnvironment" >
+    insert into app_environment (app_key, env_name, env_desc, gmt_create, gmt_modified)
+    values (#{appKey}, #{envName}, #{envDesc}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+  </insert>
+  <update id="updateEnvDescById"  >
+    update app_environment set env_desc = #{envDesc}
+    where id = #{id} and app_key = #{appKey}
+  </update>
+</mapper>

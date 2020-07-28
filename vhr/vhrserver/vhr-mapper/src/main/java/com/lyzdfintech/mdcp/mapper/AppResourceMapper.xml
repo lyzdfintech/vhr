@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.lyzdfintech.mdcp.mapper.AppMilestoneMapper" >
-  <resultMap id="BaseResultMap" type="com.lyzdfintech.mdcp.model.AppMilestone" >
+<mapper namespace="com.lyzdfintech.mdcp.mapper.AppResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.lyzdfintech.mdcp.model.AppResource" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="app_key" property="appKey" jdbcType="VARCHAR" />
-    <result column="product_release_date" property="productReleaseDate" jdbcType="DATE" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="resource_id" property="resourceId" jdbcType="VARCHAR" />
+    <result column="resource_desc" property="resourceDesc" jdbcType="VARCHAR" />
     <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
     <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, app_key, product_release_date, name, gmt_create, gmt_modified
+    id, app_key, resource_id, resource_desc, gmt_create, gmt_modified
   </sql>
   <select id="selectByAppKey" resultMap="BaseResultMap" >
     select 
     <include refid="Base_Column_List" />
-    from app_milestone
+    from app_resource
     where app_key = #{appKey}
   </select>
   <delete id="deleteById" >
-    delete from app_milestone
+    delete from app_resource
     where id = #{id} and app_key = #{appKey}
   </delete>
-  <insert id="insert" parameterType="com.lyzdfintech.mdcp.model.AppMilestone" >
-    insert into app_milestone (app_key, product_release_date, name, gmt_create, gmt_modified)
-    values (#{appKey}, #{productReleaseDate}, #{name}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+  <insert id="insert" parameterType="com.lyzdfintech.mdcp.model.AppResource" >
+    insert into app_resource (app_key, resource_id, resource_desc, gmt_create, gmt_modified)
+    values (#{appKey}, #{resourceId}, #{resourceDesc}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
   </insert>
-  <update id="updateNameById" >
-    update app_milestone set name = #{name}
+  <update id="updateResourceDescById" >
+    update app_resource set resource_desc = #{resourceDesc}
     where id = #{id} and app_key = #{appKey}
   </update>
 </mapper>

@@ -1,6 +1,7 @@
 package com.lyzdfintech.mdcp.mapper;
 
 import com.lyzdfintech.mdcp.model.AppMilestone;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -13,8 +14,8 @@ public interface AppMilestoneMapper {
 
     int insert(AppMilestone appMilestone);
 
-    int updateNameByAppKeyAndProductReleaseDate(AppMilestone appMilestone);
+    int updateNameById(@Param("name") String name, @Param("id") int id, @Param("appKey") String appKey);
 
-    int deleteById(int id);
+    int deleteById(@Param("id") int id, @Param("appKey") String appKey);
 
 }

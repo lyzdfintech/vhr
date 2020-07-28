@@ -15,7 +15,7 @@ public class AppRequirement {
     private String client;
     private String resource;
     private String service;
-    private int state;
+    private Integer state;
     private String descriptor;
     private Timestamp gmtCreate;
     private Timestamp gmtModified;
@@ -84,11 +84,11 @@ public class AppRequirement {
         this.service = service;
     }
 
-    public int getState() {
+    public Integer getState() {
         return state;
     }
 
-    public void setState(int state) {
+    public void setState(Integer state) {
         this.state = state;
     }
 

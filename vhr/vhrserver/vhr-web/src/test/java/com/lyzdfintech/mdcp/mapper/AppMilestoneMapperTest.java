@@ -42,20 +42,13 @@ public class AppMilestoneMapperTest {
     }
 
     @Test
-    public void updateNameByAppKeyAndProductReleaseDate() throws Exception {
-        AppMilestone appMilestone = new AppMilestone();
-        appMilestone.setAppKey("12345678901234567890123456789012");
-        Date productReleaseDate = new Date(System.currentTimeMillis());
-        appMilestone.setProductReleaseDate(productReleaseDate);
-        appMilestone.setName("7月16日版本");
-
-        appMilestoneMapper.updateNameByAppKeyAndProductReleaseDate(appMilestone);
+    public void updateNameById() throws Exception {
+        appMilestoneMapper.updateNameById("7月16日版本", 3, "12345678901234567890123456789012");
     }
 
     @Test
     public void deleteById() throws Exception {
-        appMilestoneMapper.deleteById(1);
-        appMilestoneMapper.deleteById(2);
+        appMilestoneMapper.deleteById(3, "12345678901234567890123456789012");
     }
 
 }
