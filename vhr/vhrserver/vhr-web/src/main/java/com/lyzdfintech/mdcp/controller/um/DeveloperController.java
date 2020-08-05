@@ -32,7 +32,6 @@ public class DeveloperController {
     public RespBean addDeveloper(HttpSession session, @RequestBody AppDeveloper appDeveloper) {
         String appKey = (String)session.getAttribute("APP_KEY");
         appDeveloper.setAppKey(appKey);
-        logger.info("{}, {}", appKey, appDeveloper);
         if (appDeveloperService.addDeveloper(appDeveloper) == 1) {
             return RespBean.ok("添加成功!");
         }

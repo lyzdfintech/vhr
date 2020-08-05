@@ -1,5 +1,7 @@
 package com.lyzdfintech.mdcp.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.sql.Timestamp;
 
 /**
@@ -10,7 +12,9 @@ public class AppService {
     private String appKey;
     private String serviceId;
     private String serviceDesc;
+    @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
     private Timestamp gmtCreate;
+    @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
     private Timestamp gmtModified;
 
     public int getId() {

@@ -15,7 +15,7 @@ public interface AppServiceMapper {
 
     int insert(AppService appService);
 
-    int updateServiceDescById(@Param("serviceDesc") String serviceDesc, @Param("id") int id, @Param("appKey") String appKey);
+    int updateById(AppService appService);
 
     int deleteById(@Param("id") int id, @Param("appKey") String appKey);
 

@@ -26,8 +26,16 @@
     insert into app_resource (app_key, resource_id, resource_desc, gmt_create, gmt_modified)
     values (#{appKey}, #{resourceId}, #{resourceDesc}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
   </insert>
-  <update id="updateResourceDescById" >
-    update app_resource set resource_desc = #{resourceDesc}
+  <update id="updateById" parameterType="com.lyzdfintech.mdcp.model.AppResource" >
+    update app_resource
+    <set>
+      <if test="resourceDesc != null">
+        resource_desc = #{resourceDesc},
+      </if>
+      <if test="resourceId != null">
+        resource_id = #{resourceId},
+      </if>
+    </set>
     where id = #{id} and app_key = #{appKey}
   </update>
 </mapper>

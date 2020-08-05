@@ -14,7 +14,7 @@ public interface AppMilestoneMapper {
 
     int insert(AppMilestone appMilestone);
 
-    int updateNameById(@Param("name") String name, @Param("id") int id, @Param("appKey") String appKey);
+    int updateById(AppMilestone appMilestone);
 
     int deleteById(@Param("id") int id, @Param("appKey") String appKey);
 

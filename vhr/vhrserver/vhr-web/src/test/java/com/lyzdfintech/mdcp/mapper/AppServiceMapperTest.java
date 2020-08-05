@@ -42,7 +42,12 @@ public class AppServiceMapperTest {
 
     @Test
     public void updateServiceDescById() throws Exception {
-        appServiceMapper.updateServiceDescById("*用户微服务*", 2, "12345678901234567890123456789012");
+        AppService appService = new AppService();
+        appService.setId(2);
+        appService.setAppKey("12345678901234567890123456789012");
+        appService.setServiceId("ucf");
+        appService.setServiceDesc("*用户微服务*");
+        appServiceMapper.updateById(appService);
     }
 
     @Test

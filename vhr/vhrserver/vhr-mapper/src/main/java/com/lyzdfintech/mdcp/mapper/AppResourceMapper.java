@@ -15,7 +15,7 @@ public interface AppResourceMapper {
 
     int insert(AppResource appResource);
 
-    int updateResourceDescById(@Param("resourceDesc") String resourceDesc, @Param("id") int id, @Param("appKey") String appKey);
+    int updateById(AppResource appResource);
 
     int deleteById(@Param("id") int id, @Param("appKey") String appKey);
 

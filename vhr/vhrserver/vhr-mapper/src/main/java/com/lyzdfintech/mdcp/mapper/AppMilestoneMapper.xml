@@ -26,8 +26,16 @@
     insert into app_milestone (app_key, product_release_date, name, gmt_create, gmt_modified)
     values (#{appKey}, #{productReleaseDate}, #{name}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
   </insert>
-  <update id="updateNameById" >
-    update app_milestone set name = #{name}
+  <update id="updateById" parameterType="com.lyzdfintech.mdcp.model.AppMilestone" >
+    update app_milestone
+    <set>
+      <if test="name != null">
+        name = #{name},
+      </if>
+      <if test="productReleaseDate != null">
+        product_release_date = #{productReleaseDate},
+      </if>
+    </set>
     where id = #{id} and app_key = #{appKey}
   </update>
 </mapper>

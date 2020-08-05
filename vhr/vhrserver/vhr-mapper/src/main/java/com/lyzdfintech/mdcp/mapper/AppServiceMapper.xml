@@ -26,8 +26,16 @@
     insert into app_service (app_key, service_id, service_desc, gmt_create, gmt_modified)
     values (#{appKey}, #{serviceId}, #{serviceDesc}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
   </insert>
-  <update id="updateServiceDescById" >
-    update app_service set service_desc = #{serviceDesc}
+  <update id="updateById" parameterType="com.lyzdfintech.mdcp.model.AppService" >
+    update app_service
+    <set>
+      <if test="serviceId != null">
+        service_id = #{serviceId},
+      </if>
+      <if test="serviceDesc != null">
+        service_desc = #{serviceDesc},
+      </if>
+    </set>
     where id = #{id} and app_key = #{appKey}
   </update>
 </mapper>

@@ -1,5 +1,7 @@
 package com.lyzdfintech.mdcp.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -9,9 +11,12 @@ import java.sql.Timestamp;
 public class AppMilestone {
     private int id;
     private String appKey;
+    @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
     private Date productReleaseDate;
     private String name;
+    @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
     private Timestamp gmtCreate;
+    @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
     private Timestamp gmtModified;
 
     public int getId() {

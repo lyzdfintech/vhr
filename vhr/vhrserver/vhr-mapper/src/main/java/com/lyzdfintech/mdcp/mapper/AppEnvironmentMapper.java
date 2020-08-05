@@ -14,7 +14,7 @@ public interface AppEnvironmentMapper {
 
     int insert(AppEnvironment appEnvironment);
 
-    int updateEnvDescById(@Param("envDesc") String envDesc, @Param("id") int id, @Param("appKey") String appKey);
+    int updateById(AppEnvironment appEnvironment);
 
     int deleteById(@Param("id") int id, @Param("appKey") String appKey);
 

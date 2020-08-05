@@ -39,6 +39,14 @@
                         :formatter="formatPermission">
                 </el-table-column>
                 <el-table-column
+                        prop="gmtCreate"
+                        label="创建时间">
+                </el-table-column>
+                <el-table-column
+                        prop="gmtModified"
+                        label="上次修改时间">
+                </el-table-column>
+                <el-table-column
                         label="操作">
                     <template slot-scope="scope">
                         <el-button @click="showEditEmpView(scope.row)" style="padding: 3px" size="mini">编辑</el-button>

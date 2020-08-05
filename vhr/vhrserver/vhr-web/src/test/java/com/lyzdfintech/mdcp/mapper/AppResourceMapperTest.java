@@ -42,7 +42,12 @@ public class AppResourceMapperTest {
 
     @Test
     public void updateResourceDescById() throws Exception {
-        appResourceMapper.updateResourceDescById("理财产品", 2, "12345678901234567890123456789012");
+        AppResource appResource = new AppResource();
+        appResource.setId(2);
+        appResource.setAppKey("12345678901234567890123456789012");
+        appResource.setResourceId("20180000");
+        appResource.setResourceDesc("理财产品");
+        appResourceMapper.updateById(appResource);
     }
 
     @Test

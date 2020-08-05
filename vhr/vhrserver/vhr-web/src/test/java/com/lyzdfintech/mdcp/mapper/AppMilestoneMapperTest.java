@@ -43,7 +43,12 @@ public class AppMilestoneMapperTest {
 
     @Test
     public void updateNameById() throws Exception {
-        appMilestoneMapper.updateNameById("7月16日版本", 3, "12345678901234567890123456789012");
+        AppMilestone appMilestone = new AppMilestone();
+        appMilestone.setAppKey("12345678901234567890123456789012");
+        Date productReleaseDate = new Date(System.currentTimeMillis());
+        appMilestone.setProductReleaseDate(productReleaseDate);
+        appMilestone.setName("7月16日版本");
+        appMilestoneMapper.updateById(appMilestone);
     }
 
     @Test

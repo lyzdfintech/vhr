@@ -41,7 +41,12 @@ public class AppEnvironmentMapperTest {
 
     @Test
     public void updateEnvDescById() throws Exception {
-        appEnvironmentMapper.updateEnvDescById("*用户验收测试环境*", 2, "12345678901234567890123456789012");
+        AppEnvironment appEnvironment = new AppEnvironment();
+        appEnvironment.setId(2);
+        appEnvironment.setAppKey("12345678901234567890123456789012");
+        appEnvironment.setEnvName("uat");
+        appEnvironment.setEnvDesc("*用户验收测试环境*");
+        appEnvironmentMapper.updateById(appEnvironment);
     }
 
     @Test

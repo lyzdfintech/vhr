@@ -30,4 +30,16 @@
     update app_environment set env_desc = #{envDesc}
     where id = #{id} and app_key = #{appKey}
   </update>
+  <update id="updateById" parameterType="com.lyzdfintech.mdcp.model.AppEnvironment" >
+    update app_environment
+    <set>
+      <if test="envName != null">
+        env_name = #{envName},
+      </if>
+      <if test="envDesc != null">
+        env_desc = #{envDesc},
+      </if>
+    </set>
+    where id = #{id} and app_key = #{appKey}
+  </update>
 </mapper>
