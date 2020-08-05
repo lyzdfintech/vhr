@@ -18,6 +18,18 @@
     <include refid="Base_Column_List" />
     from app_developer
     where app_key = #{appKey}
+    <if test="name !=null and name!=''">
+      and name like concat('%',#{name},'%')
+    </if>
+    <if test="page !=null and size!=null">
+      limit #{page},#{size}
+    </if>
+  </select>
+  <select id="countByAppKey" resultType="java.lang.Long" >
+    select count(*) from app_developer where app_key = #{appKey}
+    <if test="name !=null and name!=''">
+      and name like concat('%',#{name},'%')
+    </if>
   </select>
   <delete id="deleteById" >
     delete from app_developer

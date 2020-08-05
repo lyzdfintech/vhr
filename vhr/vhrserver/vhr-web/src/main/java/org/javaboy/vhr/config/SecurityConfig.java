@@ -77,6 +77,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 out.write(s);
                 out.flush();
                 out.close();
+                request.getSession(true).setAttribute("APP_KEY", "12345678901234567890123456789012");
             }
         });
         loginFilter.setAuthenticationFailureHandler(new AuthenticationFailureHandler() {

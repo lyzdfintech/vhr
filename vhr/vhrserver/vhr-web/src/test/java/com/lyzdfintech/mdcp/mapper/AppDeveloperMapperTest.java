@@ -39,7 +39,7 @@ public class AppDeveloperMapperTest {
     @Test
     public void selectByAppKey() throws Exception {
         String appKey = "12345678901234567890123456789012";
-        logger.info(Arrays.toString(appDeveloperMapper.selectByAppKey(appKey).toArray()));
+        logger.info(Arrays.toString(appDeveloperMapper.selectByAppKey(appKey, null, null, null).toArray()));
     }
 
     @Test

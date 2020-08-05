@@ -11,7 +11,9 @@ import java.util.List;
  */
 public interface AppDeveloperMapper {
 
-    List<AppDeveloper> selectByAppKey(String appKey);
+    List<AppDeveloper> selectByAppKey(@Param("appKey") String appKey, @Param("page") Integer page, @Param("size") Integer size, @Param("name") String name);
+
+    Long countByAppKey(@Param("appKey") String appKey, @Param("name") String name);
 
     int insert(AppDeveloper appDeveloper);
 
