@@ -21,11 +21,8 @@ public class AppRequirementService {
             page = (page - 1) * size;
         }
         List<AppRequirement> data = appRequirementMapper.selectByAppKey(appKey, page, size, name, milestone);
-        //List<AppRequirementVo> appRequirementVoList = new ArrayList();
-        //data.forEach(element -> appRequirementVoList.add(new AppRequirementVo(element)));
         Long total = appRequirementMapper.countByAppKey(appKey, name, milestone);
         RespPageBean bean = new RespPageBean();
-        //bean.setData(appRequirementVoList);
         bean.setData(data);
         bean.setTotal(total);
         return bean;

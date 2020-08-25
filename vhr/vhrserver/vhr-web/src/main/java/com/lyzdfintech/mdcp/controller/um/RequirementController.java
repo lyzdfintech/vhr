@@ -1,9 +1,6 @@
 package com.lyzdfintech.mdcp.controller.um;
 
-import com.lyzdfintech.mdcp.model.AppDeveloper;
 import com.lyzdfintech.mdcp.model.AppRequirement;
-import com.lyzdfintech.mdcp.model.AppRequirementVo;
-import com.lyzdfintech.mdcp.service.AppDeveloperService;
 import com.lyzdfintech.mdcp.service.AppRequirementService;
 import org.javaboy.vhr.model.RespBean;
 import org.javaboy.vhr.model.RespPageBean;
