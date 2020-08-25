@@ -7,8 +7,8 @@
                               clearable
                               @clear="initEmps"
                               style="width: 350px;margin-right: 10px" v-model="keyword"
-                              @keydown.enter.native="initEmps" :disabled="showAdvanceSearchView"></el-input>
-                    <el-button icon="el-icon-search" type="primary" @click="initEmps" :disabled="showAdvanceSearchView">
+                              @keydown.enter.native="initEmps"></el-input>
+                    <el-button icon="el-icon-search" type="primary" @click="initEmps">
                         搜索
                     </el-button>
                 </div>
@@ -68,26 +68,22 @@
         <el-dialog
                 :title="title"
                 :visible.sync="dialogVisible"
-                width="50%">
+                width="360px">
             <div>
                 <el-form :model="emp" :rules="rules" ref="empForm">
                     <el-row>
-                        <el-col :span="6">
-                            <el-form-item label="姓名:" prop="name">
-                                <el-input size="mini" style="width: 150px" prefix-icon="el-icon-edit" v-model="emp.name"
-                                          placeholder="请输入员工姓名"></el-input>
-                            </el-form-item>
-                        </el-col>
+                        <el-form-item label="姓名:" prop="name">
+                            <el-input size="mini" style="width: 200px" prefix-icon="el-icon-edit" v-model="emp.name"
+                                      placeholder="请输入员工姓名"></el-input>
+                        </el-form-item>
                     </el-row>
                     <el-row>
-                        <el-col :span="5">
-                            <el-form-item label="权限:" prop="permission">
-                                <el-radio-group v-model="emp.permission">
-                                    <el-radio label="1">管理</el-radio>
-                                    <el-radio label="2">普通</el-radio>
-                                </el-radio-group>
-                            </el-form-item>
-                        </el-col>
+                        <el-form-item label="权限:" prop="permission">
+                            <el-radio-group style="width: 200px" v-model="emp.permission">
+                                <el-radio :label="1">管理</el-radio>
+                                <el-radio :label="2">普通</el-radio>
+                            </el-radio-group>
+                        </el-form-item>
                     </el-row>
                 </el-form>
             </div>
@@ -112,14 +108,7 @@
                 page: 1,
                 keyword: '',
                 size: 10,
-                emp: {
-                    name: "javaboy",
-                    permission: "管理"
-                },
-                defaultProps: {
-                    children: 'children',
-                    label: 'name'
-                },
+                emp: {},
                 rules: {
                     name: [{required: true, message: '请输入用户名', trigger: 'blur'}],
                     permission: [{required: true, message: '请输入权限', trigger: 'blur'}]

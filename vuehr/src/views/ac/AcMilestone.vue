@@ -88,10 +88,6 @@
                     name: "2020二阶段版本",
                     productReleaseDate: "2020-07-04"
                 },
-                defaultProps: {
-                    children: 'children',
-                    label: 'name'
-                },
                 rules: {
                     name: [{required: true, message: '请输入版本名称', trigger: 'blur'}],
                     productReleaseDate: [{required: true, message: '请选择发布日期', trigger: 'blur'}]

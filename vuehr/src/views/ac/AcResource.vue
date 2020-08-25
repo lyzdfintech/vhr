@@ -83,10 +83,6 @@
                     resourceId: "20180001",
                     resourceDesc: "20180001"
                 },
-                defaultProps: {
-                    children: 'children',
-                    label: 'name'
-                },
                 rules: {
                     resourceId: [{required: true, message: '请输入离线资源ID', trigger: 'blur'}],
                     resourceDesc: [{required: true, message: '请输入描述信息', trigger: 'blur'}]

@@ -1,7 +1,7 @@
 package com.lyzdfintech.mdcp.mapper;
 
+import com.alibaba.fastjson.JSONArray;
 import com.lyzdfintech.mdcp.model.AppRequirement;
-import com.lyzdfintech.mdcp.model.AppService;
 import org.javaboy.vhr.VhrApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,9 +30,13 @@ public class AppRequirementMapperTest {
         AppRequirement appRequirement = new AppRequirement();
         appRequirement.setAppKey("12345678901234567890123456789012");
         appRequirement.setName("CR19231_XXXXXXX");
-        Date milestone = new Date(System.currentTimeMillis());
-        appRequirement.setMilestone(milestone);
-        appRequirement.setOwner("王美功");
+        appRequirement.setMilestone(1);
+        appRequirement.setOwner(1);
+        JSONArray client = new JSONArray();
+        client.add(1);
+        client.add(2);
+        appRequirement.setClient(client);
+        appRequirement.setState(0);
 
         appRequirementMapper.insert(appRequirement);
     }
@@ -40,7 +44,7 @@ public class AppRequirementMapperTest {
     @Test
     public void selectByAppKey() throws Exception {
         String appKey = "12345678901234567890123456789012";
-        logger.info(Arrays.toString(appRequirementMapper.selectByAppKey(appKey).toArray()));
+        logger.info(Arrays.toString(appRequirementMapper.selectByAppKey(appKey, null, null, null, null).toArray()));
     }
 
     @Test
@@ -49,12 +53,8 @@ public class AppRequirementMapperTest {
         appRequirement.setId(1);
         appRequirement.setAppKey("12345678901234567890123456789012");
         appRequirement.setName("CR19231_YYYYYYY");
-        Date milestone = new Date(System.currentTimeMillis());
-        appRequirement.setMilestone(milestone);
-        appRequirement.setOwner("白雪亮");
-        appRequirement.setClient("11");
-        appRequirement.setResource("20180000|20180001");
-        appRequirement.setService("ucf|acf");
+        appRequirement.setMilestone(2);
+        appRequirement.setOwner(2);
         appRequirement.setState(1);
         appRequirement.setDescriptor("这里是描述信息");
         appRequirementMapper.updateById(appRequirement);

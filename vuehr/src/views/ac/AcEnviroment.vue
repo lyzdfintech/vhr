@@ -83,10 +83,6 @@
                     envName: "uat",
                     envDesc: "uat"
                 },
-                defaultProps: {
-                    children: 'children',
-                    label: 'name'
-                },
                 rules: {
                     envName: [{required: true, message: '请输入环境名称', trigger: 'blur'}],
                     envDesc: [{required: true, message: '请输入描述信息', trigger: 'blur'}]

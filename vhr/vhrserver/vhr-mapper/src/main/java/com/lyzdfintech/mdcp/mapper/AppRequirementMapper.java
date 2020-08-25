@@ -11,7 +11,13 @@ import java.util.List;
  */
 public interface AppRequirementMapper {
 
-    List<AppRequirement> selectByAppKey(String appKey);
+    List<AppRequirement> selectByAppKey(@Param("appKey") String appKey,
+                                        @Param("page") Integer page,
+                                        @Param("size") Integer size,
+                                        @Param("name") String name,
+                                        @Param("milestone") Integer milestone);
+
+    Long countByAppKey(@Param("appKey") String appKey, @Param("name") String name, @Param("milestone") Integer milestone);
 
     int insert(AppRequirement appRequirement);
 

@@ -83,10 +83,6 @@
                     serviceId: "ucf",
                     serviceDesc: "用户微服务"
                 },
-                defaultProps: {
-                    children: 'children',
-                    label: 'name'
-                },
                 rules: {
                     serviceId: [{required: true, message: '请输入微服务ID', trigger: 'blur'}],
                     serviceDesc: [{required: true, message: '请输入描述信息', trigger: 'blur'}]

@@ -1,5 +1,8 @@
 package com.lyzdfintech.mdcp.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.alibaba.fastjson.JSONArray;
+
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -10,14 +13,16 @@ public class AppRequirement {
     private int id;
     private String appKey;
     private String name;
-    private Date milestone;
-    private String owner;
-    private String client;
-    private String resource;
-    private String service;
+    private Integer milestone;
+    private Integer owner;
+    private JSONArray client;
+    private JSONArray resource;
+    private JSONArray service;
     private Integer state;
     private String descriptor;
+    @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
     private Timestamp gmtCreate;
+    @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
     private Timestamp gmtModified;
 
     public int getId() {
@@ -44,43 +49,43 @@ public class AppRequirement {
         this.name = name;
     }
 
-    public Date getMilestone() {
+    public Integer getMilestone() {
         return milestone;
     }
 
-    public void setMilestone(Date milestone) {
+    public void setMilestone(Integer milestone) {
         this.milestone = milestone;
     }
 
-    public String getOwner() {
+    public Integer getOwner() {
         return owner;
     }
 
-    public void setOwner(String owner) {
+    public void setOwner(Integer owner) {
         this.owner = owner;
     }
 
-    public String getClient() {
+    public JSONArray getClient() {
         return client;
     }
 
-    public void setClient(String client) {
+    public void setClient(JSONArray client) {
         this.client = client;
     }
 
-    public String getResource() {
+    public JSONArray getResource() {
         return resource;
     }
 
-    public void setResource(String resource) {
+    public void setResource(JSONArray resource) {
         this.resource = resource;
     }
 
-    public String getService() {
+    public JSONArray getService() {
         return service;
     }
 
-    public void setService(String service) {
+    public void setService(JSONArray service) {
         this.service = service;
     }
 
@@ -122,11 +127,11 @@ public class AppRequirement {
                 "id=" + id +
                 ", appKey='" + appKey + '\'' +
                 ", name='" + name + '\'' +
-                ", milestone='" + milestone + '\'' +
-                ", owner='" + owner + '\'' +
+                ", milestone=" + milestone +
+                ", owner=" + owner +
                 ", client='" + client + '\'' +
-                ", resource='" + resource + '\'' +
-                ", service='" + service + '\'' +
+                ", resource=" + resource +
+                ", service=" + service +
                 ", state=" + state +
                 ", descriptor='" + descriptor + '\'' +
                 ", gmtCreate=" + gmtCreate +

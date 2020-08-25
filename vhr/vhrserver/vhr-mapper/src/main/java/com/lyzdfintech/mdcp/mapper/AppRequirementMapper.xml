@@ -5,11 +5,11 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="app_key" property="appKey" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="milestone" property="milestone" jdbcType="DATE" />
-    <result column="owner" property="owner" jdbcType="VARCHAR" />
-    <result column="client" property="client" jdbcType="VARCHAR" />
-    <result column="resource" property="resource" jdbcType="VARCHAR" />
-    <result column="service" property="service" jdbcType="VARCHAR" />
+    <result column="milestone" property="milestone" jdbcType="INTEGER" />
+    <result column="owner" property="owner" jdbcType="INTEGER" />
+    <result column="client" property="client" typeHandler="com.lyzdfintech.mdcp.mapper.handler.JsonArrayHandler" />
+    <result column="resource" property="resource" typeHandler="com.lyzdfintech.mdcp.mapper.handler.JsonArrayHandler" />
+    <result column="service" property="service" typeHandler="com.lyzdfintech.mdcp.mapper.handler.JsonArrayHandler" />
     <result column="state" property="state" jdbcType="INTEGER" />
     <result column="descriptor" property="descriptor" jdbcType="VARCHAR" />
     <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />
@@ -19,18 +19,40 @@
     id, app_key, name, milestone, owner, client, resource, service, state, descriptor, gmt_create, gmt_modified
   </sql>
   <select id="selectByAppKey" resultMap="BaseResultMap" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from app_requirement
     where app_key = #{appKey}
+    <if test="name !=null and name!=''">
+      and name like concat('%',#{name},'%')
+    </if>
+    <if test="milestone !=null and milestone!=''">
+      and milestone = #{milestone}
+    </if>
+    <if test="page !=null and size!=null">
+      limit #{page},#{size}
+    </if>
+  </select>
+  <select id="countByAppKey" resultType="java.lang.Long" >
+    select count(*) from app_requirement where app_key = #{appKey}
+    <if test="name !=null and name!=''">
+      and name like concat('%',#{name},'%')
+    </if>
+    <if test="milestone !=null and milestone!=''">
+      and milestone = #{milestone}
+    </if>
   </select>
   <delete id="deleteById" >
     delete from app_requirement
     where id = #{id} and app_key = #{appKey}
   </delete>
   <insert id="insert" parameterType="com.lyzdfintech.mdcp.model.AppRequirement" >
-    insert into app_requirement (app_key, name, milestone, owner, gmt_create, gmt_modified)
-    values (#{appKey}, #{name}, #{milestone}, #{owner}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    insert into app_requirement (app_key, name, milestone, owner, client, resource, service, state, descriptor, gmt_create, gmt_modified)
+    values (#{appKey}, #{name}, #{milestone}, #{owner},
+     #{client,jdbcType=OTHER,typeHandler=com.lyzdfintech.mdcp.mapper.handler.JsonArrayHandler},
+    #{resource,jdbcType=OTHER,typeHandler=com.lyzdfintech.mdcp.mapper.handler.JsonArrayHandler},
+    #{service,jdbcType=OTHER,typeHandler=com.lyzdfintech.mdcp.mapper.handler.JsonArrayHandler},
+    #{state}, #{descriptor}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
   </insert>
   <update id="updateById" parameterType="com.lyzdfintech.mdcp.model.AppRequirement" >
     update app_requirement
@@ -45,13 +67,13 @@
         owner = #{owner},
       </if>
       <if test="client != null">
-        client = #{client},
+        client = #{client,jdbcType=OTHER,typeHandler=com.lyzdfintech.mdcp.mapper.handler.JsonArrayHandler},
       </if>
       <if test="resource != null">
-        resource = #{resource},
+        resource = #{resource,jdbcType=OTHER,typeHandler=com.lyzdfintech.mdcp.mapper.handler.JsonArrayHandler},
       </if>
       <if test="service != null">
-        service = #{service},
+        service = #{service,jdbcType=OTHER,typeHandler=com.lyzdfintech.mdcp.mapper.handler.JsonArrayHandler},
       </if>
       <if test="state != null">
         state = #{state},
